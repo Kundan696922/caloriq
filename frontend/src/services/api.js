@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // In development this falls back to the local Express server.
 // In production, VITE_API_URL must point at the deployed Render backend.
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const baseURL = import.meta.env.BACKEND_URL || 'http://localhost:5000';
 
 const api = axios.create({
   baseURL: `${baseURL}/api`,
