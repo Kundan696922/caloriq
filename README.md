@@ -1,4 +1,4 @@
-# 📝 Caloriq – Full-Stack Nutrition & Wellness Web App
+# Caloriq – Full-Stack Nutrition & Wellness Web App
 
 **Caloriq** is a **Full-Stack Nutrition & Wellness Web App** built with the **MERN stack** + Tailwind CSS. It helps users calculate calorie goals, track food and weight progress, plan meals, and interact with an AI-powered nutrition assistant.
 
