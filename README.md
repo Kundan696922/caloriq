@@ -1,187 +1,116 @@
-# Caloriq
+# 📝 Caloriq – Full-Stack Nutrition & Wellness Web App
 
-Caloriq is a full-stack nutrition and wellness application that helps users track calories, monitor weight progress, plan meals, and interact with an AI-powered nutrition assistant. The project includes a Node.js/Express backend and a React + Vite frontend.
+**Caloriq** is a **Full-Stack Nutrition & Wellness Web App** built with the **MERN stack** + Tailwind CSS. It helps users calculate calorie goals, track food and weight progress, plan meals, and interact with an AI-powered nutrition assistant.
 
-## Overview
+---
 
-Caloriq combines:
+## 🚀 Demo
 
-- User authentication and profile management
-- Calorie and macro goal calculation
-- Food search and meal tracking
-- Weight tracking and progress insights
-- AI chat support for nutrition guidance
-- Dashboard summaries for health and eating habits
+> 🌐 Live Demo: 👉 [View Caloriq](https://caloriq-liart.vercel.app/)
 
-## Tech Stack
+---
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB with Mongoose
-- JWT authentication
-- CORS, cookie parsing, validation middleware
-- dotenv and Nodemon for local development
+## 🛠️ Tools Used
 
-### Frontend
-- React 19
-- Vite
-- React Router
-- Axios
-- Tailwind CSS
+| Tool | Description |
+|------|-------------|
+| ![MongoDB](https://img.icons8.com/color/24/mongodb.png) **MongoDB** | NoSQL database for user profiles, meals, and weight data |
+| ![Express](https://img.icons8.com/ios/24/express-js.png) **Express.js** | Backend API framework |
+| ![React](https://img.icons8.com/color/24/react-native.png) **React** | Frontend UI library |
+| ![Node.js](https://img.icons8.com/color/24/nodejs.png) **Node.js** | Server-side JavaScript runtime |
+| ![TailwindCSS](https://img.icons8.com/color/24/tailwindcss.png) **TailwindCSS** | Responsive UI styling |
+| <img src="https://cdn.simpleicons.org/googlegemini?viewbox=auto" width="20"> **Gemini API** | AI-powered meal recommendations and nutrition chat |
+| <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtiNbpvzB-nh0v1S2d-KkChPo8gmem8u8bcci8AoBxh41PUCQe_t-h5xM&s=10" width="24"> **USDA API** | Food and nutrition data  |
+| ![VSCode](https://img.icons8.com/color/24/visual-studio-code-2019.png) **VS Code** | Code editor |
 
-## Project Structure
+---
 
-```text
-caloriq/
-├── backend/
-│   ├── src/
-│   │   ├── app.js
-│   │   ├── server.js
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   └── utils/
-│   ├── .env.example
-│   ├── package.json
-│   └── package-lock.json
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   ├── index.html
-│   ├── package.json
-│   ├── vite.config.js
-│   └── package-lock.json
-└── README.md
-```
+## 🌟 Features
 
-## Features
+- 🔐 **Authentication** – Secure registration, login, and protected features
+- 🧮 **Calorie Calculator** – Personalized calorie and macro goals
+- 🍎 **Food Tracking** – Search and log foods using nutrition data
+- 🤖 **AI Nutrition Assistant** – AI-powered nutrition chat
+- 🍽️ **AI Meal Recommendations** – Generate personalized meal suggestions
+- ⚖️ **Weight Tracking** – Track and visualize weight progress
+- 📊 **Dashboard** – View calories, macros, meals, and progress
+- 📱 **Responsive Web Design** – Modern interface for desktop and mobile devices
 
-- Secure registration and login
-- Personal goal calculations for calories and nutrition
-- Food data retrieval and management
-- Meal logging and meal history
-- Weight tracking and progress visualization
-- Dashboard metrics and user summaries
-- AI-powered chat / recommendation experience
-- CORS-aware API configuration for local and deployed frontends
+---
 
-## Prerequisites
+## 🖼️ Overview
 
-Before running the app, make sure you have:
+<!-- Add your Caloriq screenshots here -->
 
-- Node.js 18+
-- npm
-- MongoDB running locally or a valid MongoDB connection string
+<img width="1280" height="720" alt="caloriq-dashboard" src="YOUR_IMAGE_URL" />
 
-## Environment Setup
+<img width="1280" height="720" alt="caloriq-meals" src="YOUR_IMAGE_URL" />
 
-### Backend
-Create a `.env` file inside the `backend` folder:
+<img width="1280" height="720" alt="caloriq-progress" src="YOUR_IMAGE_URL" />
+
+---
+
+## 🚀 Getting Started
+
+### 🔐 Environment Variables Setup
+
+Create a `.env` file in the **backend** folder:
 
 ```env
 PORT=5000
 NODE_ENV=development
-MONGODB_URI=mongodb://localhost:27017/caloriq
+
+MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+
 CLIENT_URL=http://localhost:5173
-JWT_SECRET=your_super_secret_key
+
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_CHAT_API_KEY=your_gemini_chat_api_key
+GEMINI_MODEL=your_gemini_model
+GEMINI_CHAT_MODEL=your_gemini_chat_model
 ```
 
-Notes:
-- `MONGODB_URI` is required for database-backed features.
-- `CLIENT_URL` allows the frontend origin in development.
-- `JWT_SECRET` is used for authentication token signing.
+Add `.env` to `.gitignore` to keep your credentials private.
 
-## Running the Project
+### Prerequisites
 
-### 1) Install backend dependencies
+Ensure you have:
+
+- **Node.js** 18+
+- **npm**
+- **MongoDB** Atlas or local MongoDB
+- **Gemini API key**
+
+### Installation
+
+🧬 **Clone the repository:**
+
+```bash
+git clone https://github.com/Kundan696922/caloriq.git
+cd caloriq
+```
+
+### 🚀 Start the Backend
 
 ```bash
 cd backend
 npm install
-```
-
-### 2) Start the backend
-
-```bash
 npm run dev
 ```
 
-The backend runs on:
+### 💻 Start the Frontend
 
-- http://localhost:5000
-
-### 3) Install frontend dependencies
+Open a new terminal:
 
 ```bash
 cd frontend
 npm install
-```
-
-### 4) Start the frontend
-
-```bash
 npm run dev
 ```
 
-The frontend development server runs on:
+The web app will run at:
 
-- http://localhost:5173
-
-## API Overview
-
-The backend exposes routes such as:
-
-- `/api/auth` – login and registration
-- `/api/users` – user profile and account routes
-- `/api/calculators` – calorie and goal calculations
-- `/api/foods` – food lookup and nutrition data
-- `/api/meals` – meal creation and retrieval
-- `/api/weight` – weight tracking endpoints
-- `/api/dashboard` – dashboard analytics
-- `/api/chat` – AI assistant interactions
-- `/api/health` – health check endpoint
-
-## Production Notes
-
-- The app is designed to keep running even if MongoDB is temporarily unavailable, but database-backed features will not work until the connection is restored.
-- In production, set `NODE_ENV=production` and use a secure `JWT_SECRET`.
-- Update `CLIENT_URL` to match the deployed frontend domain.
-
-## Common Development Commands
-
-### Backend
-```bash
-cd backend
-npm install
-npm run dev
-npm start
+```text
+http://localhost:5173
 ```
-
-### Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-npm run build
-```
-
-## License
-
-This project is currently provided without a formal license. Add a license file if you want to define usage and distribution terms.
-
-## Contributing
-
-If you want to contribute:
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Open a pull request
-
-## Contact
-
-For questions or collaboration, contact the project maintainer or update this section with your preferred contact details.
