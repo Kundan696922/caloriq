@@ -1,33 +1,40 @@
-import { useEffect, useState } from 'react';
-import api from '../services/api';
+import { useEffect, useState, useCallback } from "react";
+import api from "../services/api";
 
 /**
- * Pings the backend /api/health endpoint once on mount.
- * Used during initial setup to confirm the frontend and backend are wired together.
+ * Pings the backend /api/health endpoint on mount (and on demand via retry).
+ * Used to gate initial render until the backend responds — useful when the
+ * backend is on a service that cold-starts (e.g. Render free tier).
  */
 export default function useHealthCheck() {
-  const [status, setStatus] = useState('checking');
+  const [status, setStatus] = useState("checking");
   const [details, setDetails] = useState(null);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     let isMounted = true;
+    setStatus("checking");
 
     api
-      .get('/health')
+      .get("/health")
       .then((res) => {
         if (!isMounted) return;
-        setStatus('online');
+        setStatus("online");
         setDetails(res.data);
       })
       .catch(() => {
         if (!isMounted) return;
-        setStatus('offline');
+        setStatus("offline");
       });
 
     return () => {
       isMounted = false;
     };
+  }, [attempt]);
+
+  const retry = useCallback(() => {
+    setAttempt((prev) => prev + 1);
   }, []);
 
-  return { status, details };
+  return { status, details, retry };
 }
