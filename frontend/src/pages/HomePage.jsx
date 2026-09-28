@@ -10,6 +10,7 @@ import {
 
 import Button from "../components/common/Button";
 import Toast from "../components/common/Toast";
+import BackendLoader from "../components/common/BackendLoader";
 import useAuth  from "../hooks/useAuth";
 
 const GUEST_FEATURES = [
@@ -142,11 +143,7 @@ export default function HomePage() {
 
   // Prevent the guest version briefly appearing while auth is being checked.
   if (loading) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent" />
-      </div>
-    );
+    return <BackendLoader status="checking" fullScreen={false} />;
   }
 
   return (

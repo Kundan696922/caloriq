@@ -1,5 +1,4 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import BackendLoader from "../common/Backendloader";
 
 import useAuth from "../../hooks/useAuth";
 
@@ -10,11 +9,7 @@ export default function ProtectedRoute() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <BackendLoader
-          status="checking"
-          message="Checking your session"
-          fullScreen={false}
-        />
+        <div className="text-text-secondary">Loading...</div>
       </div>
     );
   }
