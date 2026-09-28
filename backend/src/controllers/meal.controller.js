@@ -166,7 +166,7 @@ async function logMeal(req, res, next) {
       { upsert: true, new: true, setDefaultsOnInsert: true },
     );
 
-    const target = getProfileTarget(req.user);
+    const target = await getProfileTarget(req.user);
     const totals = sumEntries(log.entries);
     const remaining = getRemaining({ target, totals });
 

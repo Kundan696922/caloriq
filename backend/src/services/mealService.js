@@ -346,7 +346,7 @@ async function processCandidate(raw, { rules, targets, params, ctx, limit }) {
  */
 async function generateMeals({ user, params: rawParams }) {
   const params = normalizeParams(rawParams);
-  const target = getProfileTarget(user);
+  const target = await getProfileTarget(user);
 
   const remaining =
     params.fitTo === "remaining_today"

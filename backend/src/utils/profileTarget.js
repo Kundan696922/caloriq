@@ -1,23 +1,19 @@
 const { AppError } = require("../middleware/errorHandler");
 const { getFullCalorieProfile } = require("./calorieCalculations");
+const WeightEntry = require("../models/WeightEntry");
 
 const REQUIRED_PROFILE_FIELDS = [
   "age",
   "gender",
   "heightCm",
-  "weightKg",
   "activityLevel",
   "goal",
   "goalSpeed",
 ];
 
-/**
- * Same logic as getProfileTarget() in dashboard.controller.js, extracted so the
- * meals feature can reuse it. (Optional cleanup later: make dashboard.controller
- * import this instead of keeping its own copy.)
- */
-function getProfileTarget(user) {
+async function getProfileTarget(user) {
   const profile = user.profile || {};
+
   const missing = REQUIRED_PROFILE_FIELDS.filter(
     (field) => profile[field] === undefined || profile[field] === null,
   );
@@ -29,7 +25,23 @@ function getProfileTarget(user) {
     );
   }
 
-  return getFullCalorieProfile(profile);
+  const latestWeight = await WeightEntry.findOne({
+    user: user._id,
+  })
+    .sort({ date: -1 })
+    .lean();
+
+  if (!latestWeight) {
+    throw new AppError(
+      "Add your current weight in Weight Progress before generating personalized meals.",
+      400,
+    );
+  }
+
+  return getFullCalorieProfile({
+    ...profile,
+    weightKg: latestWeight.weightKg,
+  });
 }
 
 module.exports = { REQUIRED_PROFILE_FIELDS, getProfileTarget };
